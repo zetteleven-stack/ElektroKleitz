@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elektro Kleitz – Installation · Reparatur · Kundendienst</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D0021B;
+    --red-dark: #A00015;
+    --yellow: #F5A623;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --dark2: #1A1A1A;
+    --gray: #2A2A2A;
+    --light: #F0F0F0;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 70px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo .bolt {
+    width: 36px;
+    height: 36px;
+    background: var(--red);
+    clip-path: polygon(50% 0%, 70% 35%, 55% 35%, 80% 100%, 30% 55%, 48% 55%, 20% 0%);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+
+  .nav-logo span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 3px;
+    color: var(--white);
+  }
+  .nav-logo span em {
+    color: var(--red);
+    font-style: normal;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: #999;
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--red); }
+
+  .nav-tel {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--white);
+    background: var(--red);
+    padding: 8px 20px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-tel:hover { background: var(--red-dark); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 40px 80px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(208,2,27,0.12) 0%, transparent 70%),
+      linear-gradient(160deg, #0A0A0A 0%, #1A0A0A 100%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(208,2,27,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(208,2,27,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(208,2,27,0.15);
+    border: 1px solid rgba(208,2,27,0.4);
+    padding: 6px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 9vw, 120px);
+    line-height: 0.92;
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+
+  .hero h1 .red { color: var(--red); }
+  .hero h1 .outline {
+    -webkit-text-stroke: 2px rgba(255,255,255,0.3);
+    color: transparent;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 480px;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+
+  .hero-sub strong { color: var(--white); font-weight: 600; }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--red);
+    color: var(--white);
+    padding: 16px 32px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.4s;
+  }
+
+  .btn-primary:hover::after { transform: translateX(100%); }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    padding: 14px 30px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover {
+    border-color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    z-index: 2;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+
+  .stat-box {
+    text-align: center;
+    padding: 24px 32px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-top: 3px solid var(--red);
+    position: relative;
+  }
+
+  .stat-box .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: 2px;
+  }
+
+  .stat-box .num span { color: var(--red); }
+
+  .stat-box .label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--red);
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-flex;
+    gap: 60px;
+    animation: ticker 20s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ticker-item::before {
+    content: '⚡';
+    font-size: 12px;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION ── */
+  section { padding: 100px 40px; }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 30px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 60px;
+  }
+
+  /* ── LEISTUNGEN ── */
+  #leistungen {
+    background: var(--dark);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    margin-top: 0;
+  }
+
+  .service-card {
+    background: var(--dark2);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover { background: #1f1f1f; transform: translateY(-4px); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .service-card p {
+    font-size: 15px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.7;
+  }
+
+  .service-num {
+    position: absolute;
+    bottom: 20px;
+    right: 24px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+    transition: color 0.3s;
+  }
+  .service-card:hover .service-num {
+    color: rgba(208,2,27,0.07);
+  }
+
+  /* ── ÜBER UNS ── */
+  #ueber {
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px;
+    line-height: 0.85;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(208,2,27,0.2);
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .about-card {
+    position: relative;
+    z-index: 1;
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-left: 4px solid var(--red);
+    padding: 48px;
+  }
+
+  .about-card h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .about-card h2 span { color: var(--red); }
+
+  .about-card p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #999;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .about-checks {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ccc;
+  }
+
+  .check-item::before {
+    content: '✓';
+    width: 24px;
+    height: 24px;
+    background: var(--red);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .about-right .section-label { justify-content: flex-start; }
+
+  .about-right p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #999;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  /* ── NOTFALL BANNER ── */
+  .notfall {
+    background: var(--red);
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .notfall::before {
+    content: '⚡⚡⚡';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 300px;
+    opacity: 0.04;
+    pointer-events: none;
+    letter-spacing: 40px;
+  }
+
+  .notfall h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .notfall p {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .notfall a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    color: var(--red);
+    padding: 18px 48px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    text-decoration: none;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .notfall a:hover { transform: scale(1.03); }
+
+  /* ── KONTAKT ── */
+  #kontakt {
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 40px;
+  }
+
+  .contact-info h2 span { color: var(--red); }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .contact-item .icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(208,2,27,0.12);
+    border: 1px solid rgba(208,2,27,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    color: var(--red);
+  }
+
+  .contact-item .text strong {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 4px;
+  }
+
+  .contact-item .text a,
+  .contact-item .text span {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item .text a:hover { color: var(--red); }
+
+  .contact-form {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 48px;
+  }
+
+  .contact-form h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0;
+    color: var(--white);
+    padding: 14px 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--red);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-group select option { background: var(--dark2); }
+
+  .form-submit {
+    width: 100%;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 16px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+  /* ── MAP ── */
+  .map-section {
+    height: 300px;
+    background: var(--dark2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-section iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(80%) invert(90%) contrast(85%);
+    opacity: 0.8;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--white);
+  }
+
+  .footer-logo em {
+    color: var(--red);
+    font-style: normal;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: #444;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--red); }
+
+  /* ── ANIMATIONS ON SCROLL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-stats { display: none; }
+    #ueber, #kontakt { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+    section { padding: 60px 24px; }
+    .about-big-num { font-size: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="bolt"></div>
+    <span>Elektro <em>Kleitz</em></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#ueber">Über uns</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="tel:016398539040" class="nav-tel">☎ 0163 985 39 04</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Paderborn · Elsen · NRW</div>
+    <h1>
+      ELEKTRO<br>
+      <span class="red">KLEITZ</span><br>
+      <span class="outline">MEISTERBETRIEB</span>
+    </h1>
+    <p class="hero-sub">
+      Ihr zuverlässiger Partner für <strong>Installation, Reparatur und Kundendienst</strong> in Paderborn und Umgebung. Qualität, die Bestand hat.
+    </p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">⚡ Jetzt Kontakt aufnehmen</a>
+      <a href="#leistungen" class="btn-outline">Unsere Leistungen →</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-box">
+      <div class="num">24<span>/7</span></div>
+      <div class="label">Erreichbar</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">100<span>%</span></div>
+      <div class="label">Kundenzufrieden.</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">⚡</div>
+      <div class="label">Schnellservice</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Elektroinstallation</span>
+    <span class="ticker-item">Reparaturservice</span>
+    <span class="ticker-item">Kundendienst</span>
+    <span class="ticker-item">Smart Home</span>
+    <span class="ticker-item">Paderborn</span>
+    <span class="ticker-item">Elsen</span>
+    <span class="ticker-item">Meisterbetrieb</span>
+    <span class="ticker-item">Elektroinstallation</span>
+    <span class="ticker-item">Reparaturservice</span>
+    <span class="ticker-item">Kundendienst</span>
+    <span class="ticker-item">Smart Home</span>
+    <span class="ticker-item">Paderborn</span>
+    <span class="ticker-item">Elsen</span>
+    <span class="ticker-item">Meisterbetrieb</span>
+  </div>
+</div>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen">
+  <div class="section-label">Was wir bieten</div>
+  <div class="section-title">UNSERE LEISTUNGEN</div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🔌</span>
+      <h3>Installation</h3>
+      <p>Fachgerechte Neuinstallationen für Privat- und Gewerbekunden. Von der Unterverteilung bis zur kompletten Elektrik.</p>
+      <div class="service-num">01</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🔧</span>
+      <h3>Reparatur</h3>
+      <p>Schnelle und zuverlässige Reparatur von Elektrogeräten und Anlagen. Diagnose und Instandsetzung durch Fachpersonal.</p>
+      <div class="service-num">02</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🛎</span>
+      <h3>Kundendienst</h3>
+      <p>Persönlicher und direkter Ansprechpartner für alle Elektroarbeiten. Wartung und Betreuung Ihrer Anlage.</p>
+      <div class="service-num">03</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon"></span>
+      <h3>Smart Home</h3>
+      <p>Intelligente Haustechnik nach Maß. Licht, Sicherheit und Komfort – vernetzt und steuerbar über Ihr Smartphone.</p>
+      <div class="service-num">04</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon"></span>
+      <h3>Sicherheitstechnik</h3>
+      <p>Alarmanlage, Videoüberwachung und Zugangskontrolle. Professioneller Schutz für Ihr Zuhause und Gewerbe.</p>
+      <div class="service-num">05</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">>/span>
+      <h3>Photovoltaik</h3>
+      <p>Planung und Installation von Photovoltaikanlagen. Unabhängige Energieversorgung für die Zukunft.</p>
+      <div class="service-num">06</div>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER UNS -->
+<section id="ueber">
+  <div class="about-visual reveal">
+    <div class="about-big-num">EK</div>
+    <div class="about-card">
+      <h2>ELEKTRO<br><span>KLEITZ</span></h2>
+      <p>Ihr zuverlässiger Elektrofachbetrieb direkt in Paderborn-Elsen. Wir stehen für handwerkliche Qualität, Pünktlichkeit und faire Preise.</p>
+      <p>Als etablierter Meisterbetrieb in der Region kennen wir die lokalen Anforderungen und bieten Ihnen maßgeschneiderte Lösungen.</p>
+      <div class="about-checks">
+        <div class="check-item">Zertifizierter Meisterbetrieb</div>
+        <div class="check-item">Schnelle Reaktionszeiten</div>
+        <div class="check-item">Faire und transparente Preise</div>
+        <div class="check-item">Regionale Verlässlichkeit</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-right reveal">
+    <div class="section-label">Über uns</div>
+    <div class="section-title">WARUM KLEITZ?</div>
+    <p>Wir sind kein anonymes Großunternehmen, sondern ein bodenständiger Handwerksbetrieb aus Paderborn. Bei uns haben Sie immer einen direkten Ansprechpartner – ohne Warteschleifen, ohne Bürokratie.</p>
+    <p>Ob kleine Reparatur oder große Installation – wir behandeln jeden Auftrag mit derselben Sorgfalt und Professionalität. Das ist unser Versprechen an Sie.</p>
+    <p>Unser Einzugsgebiet umfasst Paderborn, Elsen und die gesamte Umgebung in Nordrhein-Westfalen. Rufen Sie einfach an – wir sind für Sie da.</p>
+    <div style="margin-top: 40px;">
+      <a href="tel:016398539040" class="btn-primary">☎ Jetzt anrufen</a>
+    </div>
+  </div>
+</section>
+
+<!-- NOTFALL BANNER -->
+<div class="notfall">
+  <h2>ELEKTRISCHER NOTFALL?</h2>
+  <p>Wir sind für Sie da – rufen Sie uns direkt an.</p>
+  <a href="tel:016398539040">⚡ 0163 985 39 04</a>
+</div>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="contact-info reveal">
+    <div class="section-label">Kontakt</div>
+    <h2>SPRECHEN<br>WIR <span>MITEINANDER</span></h2>
+    <div class="contact-items">
+      <div class="contact-item">
+        <div class="icon"></div>
+        <div class="text">
+          <strong>Adresse</strong>
+          <span>Henkenstraße 26, 33106 Paderborn (Elsen)</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon"></div>
+        <div class="text">
+          <strong>Telefon</strong>
+          <a href="tel:016398539040">0163 985 39 04</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon"></div>
+        <div class="text">
+          <strong>Erreichbarkeit</strong>
+          <span>Mo–Fr 07:00–18:00 Uhr</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="icon"></div>
+        <div class="text">
+          <strong>Region</strong>
+          <span>Paderborn · Elsen · Nordrhein-Westfalen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form reveal">
+    <h3>ANFRAGE STELLEN</h3>
+    <div class="form-group">
+      <label>Name *</label>
+      <input type="text" placeholder="Ihr vollständiger Name">
+    </div>
+    <div class="form-group">
+      <label>Telefon *</label>
+      <input type="tel" placeholder="Ihre Telefonnummer">
+    </div>
+    <div class="form-group">
+      <label>Leistung</label>
+      <select>
+        <option value="">Bitte wählen...</option>
+        <option>Installation</option>
+        <option>Reparatur</option>
+        <option>Kundendienst</option>
+        <option>Smart Home</option>
+        <option>Sicherheitstechnik</option>
+        <option>Photovoltaik</option>
+        <option>Notfall / Sonstiges</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Ihre Nachricht</label>
+      <textarea placeholder="Beschreiben Sie kurz Ihr Anliegen..."></textarea>
+    </div>
+    <button class="form-submit" onclick="alert('Vielen Dank! Wir melden uns schnellstmöglich bei Ihnen.')">ANFRAGE ABSENDEN ⚡</button>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-section">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2465.0!2d8.735!3d51.71!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ba55b0!2sHenkenstra%C3%9Fe+26%2C+33106+Paderborn!5e0!3m2!1sde!2sde!4v1"
+    allowfullscreen
+    loading="lazy">
+  </iframe>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Elektro <em>Kleitz</em></div>
+  <p>© 2025 Elektro Kleitz · Henkenstraße 26 · 33106 Paderborn · Meisterbetrieb</p>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 50 ? '0 4px 30px rgba(208,2,27,0.15)' : 'none';
+  });
+</script>
+</body>
+</html>
